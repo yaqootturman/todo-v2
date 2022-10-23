@@ -1,23 +1,24 @@
 import { useState } from "react";
 import CATEGORIES_OPTIONS from "../../constants/data.js";
+import './form.css'
 
 const Form = (props) => {
-    const {onAddItem} = props
+  const { onAddItem } = props;
   const [task, setTask] = useState("");
   const [category, setCategory] = useState("");
-  const [isUrgent, setIsUrgent] = useState(false)
+  const [isUrgent, setIsUrgent] = useState(false);
 
-  const handleSubmit = (event)=>{
-    event.preventDefault()
-    const newItem ={
-        id: Date.now(),
-        title: task,
-        category: category,
-        urgent: isUrgent
-    }
-    console.log(newItem)
-    onAddItem(newItem)
-  }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const newItem = {
+      id: Date.now(),
+      title: task,
+      category: category,
+      urgent: isUrgent,
+    };
+    console.log(newItem);
+    onAddItem(newItem);
+  };
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -51,10 +52,12 @@ const Form = (props) => {
           })}
         </select>
         <input
-            name="urgent"
-            type="checkbox"
-            checked={isUrgent}
-            onChange={(e)=>{setIsUrgent(e.target.checked)}}
+          name="urgent"
+          type="checkbox"
+          checked={isUrgent}
+          onChange={(e) => {
+            setIsUrgent(e.target.checked);
+          }}
         ></input>
         <label>Urgent</label>
         <input type="submit" value="add to list"></input>
