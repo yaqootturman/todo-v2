@@ -1,6 +1,6 @@
 import { useState } from "react";
 import CATEGORIES_OPTIONS from "../../constants/data.js";
-import './form.css'
+import "./form.css";
 
 const Form = (props) => {
   const { onAddItem } = props;
@@ -16,7 +16,7 @@ const Form = (props) => {
       category: category,
       urgent: isUrgent,
     };
-    console.log(newItem);
+
     onAddItem(newItem);
   };
   return (

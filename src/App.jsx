@@ -1,6 +1,7 @@
 import './App.css';
 import { useState } from 'react';
 import Form from './components/form/form.component';
+import List from './components/list/list.component';
 
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
   return (
     <div className="App">
       <Form onAddItem={addItem}/>
-      {console.log("add item, ", items)}
+      <List items={items}/>
     </div>
   );
 }

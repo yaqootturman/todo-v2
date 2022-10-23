@@ -1,0 +1,11 @@
+.items-list {
+  padding: 10px;
+}
+
+.items-list ul {
+  padding: 0;
+  margin: 0;
+}
+.items-list .item {
+  list-style-type: none;
+}
