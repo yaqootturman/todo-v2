@@ -1,6 +1,6 @@
 import "./list.css";
 const Item = (props) => {
-  const { item, deleteItem } = props;
+  const { item, deleteItem, onFinish } = props;
   return (
     <li className="item">
       <div className="title">
@@ -8,6 +8,7 @@ const Item = (props) => {
       </div>
       <div className="actions">
         <button onClick={() => deleteItem(item.id)}>Delete</button>
+        <button onClick={() => onFinish(item.id)}>DONE</button>
       </div>
     </li>
   );
