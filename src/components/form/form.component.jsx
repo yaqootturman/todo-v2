@@ -12,6 +12,7 @@ const Form = (props) => {
     event.preventDefault();
     const newItem = {
       id: Date.now(),
+      isDone:false,
       title: task,
       category: category,
       urgent: isUrgent,

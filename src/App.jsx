@@ -13,11 +13,16 @@ function App() {
     const newItems = items.filter((ele) => ele.id !== id);
     setItems(newItems);
   };
-
+  const completeTask = (id) => {
+    const newItems = items.map((item) =>
+      item.id === id ? { ...item, isDone: true } : item
+    );
+    setItems(newItems);
+  };
   return (
     <div className="App">
       <Form onAddItem={addItem} />
-      <List items={items} onDelete={deleteItem} />
+      <List items={items} onDelete={deleteItem} onFinish={completeTask} />
     </div>
   );
 }
