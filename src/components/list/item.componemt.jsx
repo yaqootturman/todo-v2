@@ -3,7 +3,7 @@ const Item = (props) => {
   const { item, deleteItem, onFinish } = props;
   return (
     <li className="item">
-      <div className="title">
+      <div className={item.isDone?"done-item":"title"}>
         <h1>{item.title}</h1>
       </div>
       <div className="actions">

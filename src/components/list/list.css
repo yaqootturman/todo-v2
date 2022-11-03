@@ -9,3 +9,9 @@
 .items-list .item {
   list-style-type: none;
 }
+
+.items-list .item .done-item {
+  text-decoration: line-through;
+}
+
+
