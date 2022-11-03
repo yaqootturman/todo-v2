@@ -2,6 +2,8 @@ import "./App.css";
 import { useState } from "react";
 import Form from "./components/form/form.component";
 import List from "./components/list/list.component";
+import { confirmAlert } from "react-confirm-alert"; // Import
+import "react-confirm-alert/src/react-confirm-alert.css"; //
 
 function App() {
   const [items, setItems] = useState([]);
@@ -10,8 +12,23 @@ function App() {
     setItems([...items, item]);
   };
   const deleteItem = (id) => {
-    const newItems = items.filter((ele) => ele.id !== id);
-    setItems(newItems);
+    confirmAlert({
+      title: "Confirm to Delete",
+      message: "Are you sure you want to delete te task?",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: () => {
+            const newItems = items.filter((ele) => ele.id !== id);
+            setItems(newItems);
+          },
+        },
+        {
+          label: "No",
+          // onClick: () => alert('Click No')
+        },
+      ],
+    });
   };
   const completeTask = (id) => {
     const newItems = items.map((item) =>
