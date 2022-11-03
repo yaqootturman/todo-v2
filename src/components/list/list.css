@@ -8,10 +8,14 @@
 }
 .items-list .item {
   list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  border-bottom-style: dotted;
 }
 
 .items-list .item .done-item {
   text-decoration: line-through;
 }
-
-
