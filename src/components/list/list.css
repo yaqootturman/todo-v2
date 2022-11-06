@@ -17,7 +17,9 @@
   padding:0px 12px;
   background-color: #EDF2ED;
 }
-
+.items-list .item.urgent-item {
+  color: #c34b4b;
+}
 .items-list .item .done-item {
   text-decoration: line-through;
 }
