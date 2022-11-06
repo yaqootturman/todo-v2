@@ -11,14 +11,20 @@ function App() {
     JSON.parse(localStorage.getItem("items") ?? "[]")
   );
   const [serchInput, setSearchInput] = useState("");
-  const [searchedArray, setSearchedArray] = useState([])
+  const [searchedArray, setSearchedArray] = useState([]);
 
   const handleChange = (e) => {
-    setSearchInput(e.target.value);
-    const newItems = items.filter((ele) => {
-      return ele.title.includes(e.target.value) ? ele : "";
-    });
-    setSearchedArray(newItems)
+    e.preventDefault();
+    if (e.target.value === "") {
+      setSearchedArray([]);
+      setSearchInput(e.target.value);
+    } else {
+      setSearchInput(e.target.value);
+      const newItems = items.filter((ele) => {
+        return ele.title.includes(e.target.value) ? ele : "";
+      });
+      setSearchedArray(newItems);
+    }
   };
   const addItem = (item) => {
     const newItems = [item, ...items];
@@ -54,9 +60,17 @@ function App() {
   };
   return (
     <div className="App">
-      <SearchForm onSearch={handleChange} serchInput={serchInput} searchedArray ={searchedArray} />
+      <SearchForm
+        onSearch={handleChange}
+        serchInput={serchInput}
+        searchedArray={searchedArray}
+      />
       <Form onAddItem={addItem} />
-      <List items={searchedArray !==[]?searchedArray :items} onDelete={deleteItem} onFinish={completeTask} />
+      <List
+        items={searchedArray.length <= 0 ? items : searchedArray}
+        onDelete={deleteItem}
+        onFinish={completeTask}
+      />
     </div>
   );
 }
