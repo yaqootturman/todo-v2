@@ -13,12 +13,12 @@ const Item = (props) => {
         <h1>{item.title}</h1>
       </div>
       <div className="actions">
-        <button type="button" onClick={() => deleteItem(item.id)}>
+        <button type="button" className="button-delete" onClick={() => deleteItem(item.id)}>
           {" "}
           <FontAwesomeIcon icon={faTrash} />
           Delete
         </button>
-        <button type="button" onClick={() => onFinish(item.id)}>
+        <button type="button" className="button-complete" onClick={() => onFinish(item.id)}>
           <FontAwesomeIcon icon={faCheck} />
           DONE
         </button>
