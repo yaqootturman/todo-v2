@@ -13,9 +13,27 @@
   align-items: center;
   justify-content: space-around;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  border-bottom-style: dotted;
+  border-bottom: 2px solid rgb(44, 155, 165);
+  padding:0px 12px;
+  background-color: #EDF2ED;
 }
 
 .items-list .item .done-item {
   text-decoration: line-through;
+}
+.items-list .item .button-delete{
+  background-color: #f44336; /* Green */
+  border: none;
+  color: white;
+  padding: 13px 24px;
+  text-align: center;
+  text-decoration: none;
+}
+.items-list .item .button-complete{
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 13px 24px;
+  text-align: center;
+  text-decoration: none;
 }
