@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Form from "./components/form/form.component";
 import List from "./components/list/list.component";
 import { confirmAlert } from "react-confirm-alert"; // Import
@@ -7,7 +7,6 @@ import "react-confirm-alert/src/react-confirm-alert.css"; //
 
 function App() {
   const [items, setItems] = useState([]);
-
   const addItem = (item) => {
     setItems([...items, item]);
   };
@@ -33,7 +32,7 @@ function App() {
   const completeTask = (id) => {
     const newItems = items.map((item) =>
       item.id === id ? { ...item, isDone: true } : item
-    );
+    ).sort((a, b) => (a.isDone ? 1 : -1));
     setItems(newItems);
   };
   return (
