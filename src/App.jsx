@@ -2,6 +2,7 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import Form from "./components/form/form.component";
 import List from "./components/list/list.component";
+import SearchForm from "./components/search/search.component";
 import { confirmAlert } from "react-confirm-alert"; // Import
 import "react-confirm-alert/src/react-confirm-alert.css"; //
 
@@ -9,6 +10,16 @@ function App() {
   const [items, setItems] = useState(
     JSON.parse(localStorage.getItem("items") ?? "[]")
   );
+  const [serchInput, setSearchInput] = useState("");
+  const [searchedArray, setSearchedArray] = useState([])
+
+  const handleChange = (e) => {
+    setSearchInput(e.target.value);
+    const newItems = items.filter((ele) => {
+      return ele.title.includes(e.target.value) ? ele : "";
+    });
+    setSearchedArray(newItems)
+  };
   const addItem = (item) => {
     const newItems = [item, ...items];
     setItems(newItems);
@@ -43,8 +54,9 @@ function App() {
   };
   return (
     <div className="App">
+      <SearchForm onSearch={handleChange} serchInput={serchInput} searchedArray ={searchedArray} />
       <Form onAddItem={addItem} />
-      <List items={items} onDelete={deleteItem} onFinish={completeTask} />
+      <List items={searchedArray !==[]?searchedArray :items} onDelete={deleteItem} onFinish={completeTask} />
     </div>
   );
 }
