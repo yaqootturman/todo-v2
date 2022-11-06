@@ -6,9 +6,13 @@ import { confirmAlert } from "react-confirm-alert"; // Import
 import "react-confirm-alert/src/react-confirm-alert.css"; //
 
 function App() {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(
+    JSON.parse(localStorage.getItem("items") ?? "[]")
+  );
   const addItem = (item) => {
-    setItems([...items, item]);
+    const newItems = [item, ...items];
+    setItems(newItems);
+    localStorage.setItem("items", JSON.stringify(newItems));
   };
   const deleteItem = (id) => {
     confirmAlert({
@@ -20,6 +24,7 @@ function App() {
           onClick: () => {
             const newItems = items.filter((ele) => ele.id !== id);
             setItems(newItems);
+            localStorage.setItem("items", JSON.stringify(newItems));
           },
         },
         {
@@ -30,10 +35,11 @@ function App() {
     });
   };
   const completeTask = (id) => {
-    const newItems = items.map((item) =>
-      item.id === id ? { ...item, isDone: true } : item
-    ).sort((a, b) => (a.isDone ? 1 : -1));
+    const newItems = items
+      .map((item) => (item.id === id ? { ...item, isDone: true } : item))
+      .sort((a, b) => (a.isDone ? 1 : -1));
     setItems(newItems);
+    localStorage.setItem("items", JSON.stringify(newItems));
   };
   return (
     <div className="App">
